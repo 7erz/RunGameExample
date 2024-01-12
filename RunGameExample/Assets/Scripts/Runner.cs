@@ -13,6 +13,12 @@ public class Runner : MonoBehaviour
 {
     [SerializeField] RoadLine roadLine;
     [SerializeField] float positionX;
+    [SerializeField] float moveSpeed;
+
+    private void OnEnable()
+    {
+        InputManager.instance.keyAction += Move;
+    }
     void Start()
     {
         roadLine = RoadLine.MIDDLE;
@@ -21,7 +27,6 @@ public class Runner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
         Status();
     }
 
@@ -61,6 +66,11 @@ public class Runner : MonoBehaviour
 
     public void SmoothMovement(float positionX)
     {
-        transform.position = new Vector3 (positionX, 0, 0);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(positionX, 0, 0), Time.deltaTime * moveSpeed);
+    }
+
+    private void OnDisable()
+    {
+        InputManager.instance.keyAction -= Move;
     }
 }

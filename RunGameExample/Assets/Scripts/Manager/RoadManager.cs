@@ -9,6 +9,8 @@ public class RoadManager : MonoBehaviour
     public float lerpSpeed;
     GameObject newRoad;
 
+    [SerializeField] float offset = 24f;
+
 
     private void Start()
     {
@@ -19,7 +21,7 @@ public class RoadManager : MonoBehaviour
 
     private void Update()
     {
-        Debugging();
+        //Debugging();
         MoveRoadForeach();    //³ªÀÇ ´ä
         //MoveRoadFor();
     }
@@ -52,6 +54,18 @@ public class RoadManager : MonoBehaviour
         roadList.Add(newRoad);
         newRoad.transform.position = new Vector3(0, 0, 72);
         newRoad = roadList[0];
+    }
+
+    public void NewPosition()
+    {
+        GameObject newRoad = roadList[0];
+        roadList.Remove(newRoad);
+
+        float newZ = roadList[roadList.Count - 1].transform.position.z + offset;
+
+        newRoad.transform.position = new Vector3(0, 0, newZ);
+
+        roadList.Add(newRoad);
     }
 
 

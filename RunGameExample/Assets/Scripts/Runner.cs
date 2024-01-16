@@ -32,6 +32,18 @@ public class Runner : MonoBehaviour
 
     public void Move()
     {
+        //Resources.Load();
+        /*
+        //if(Input.GetKeyDown(KeyCode.Space))
+        //{
+        // 퍼즈 같은 것들을 불러올수도 있음,
+        //GameObject panel = null이고, panel == null 이면 Instantiate 아니라면 SetActive
+        //    Instantiate(Resources.Load<GameObject>("Runner"));      //<>안에는 가져올 것들 Image,Sprite등
+        //관리가 어려움 -> ResourcesManager를 만들어 하나에 관리하는 방법이 있음
+        //}*/
+
+
+
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             if(roadLine >RoadLine.LEFT)

@@ -17,11 +17,12 @@ public class Runner : MonoBehaviour
 
     private void OnEnable()
     {
-        InputManager.instance.keyAction += Move;
+        
     }
     void Start()
     {
         roadLine = RoadLine.MIDDLE;
+        InputManager.instance.keyAction += Move;
     }
 
     // Update is called once per frame

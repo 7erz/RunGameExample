@@ -10,6 +10,7 @@ public class SpawnManager : MonoBehaviour
 
 
     [SerializeField] int count, carRand, roadRand;
+    [SerializeField] int compareRoad = -1;
 
 
     private void Start()
@@ -55,23 +56,36 @@ public class SpawnManager : MonoBehaviour
         //CourutineCache.WaitForSecond(변수값)
         while (true)
         {
-            carRand = Random.Range(0,vehicleObj.Length);
-            while (vehicleList[carRand].activeSelf)
+            for(int i = 0; i<Random.Range(1,3); i++)
             {
-                count++;
-                if(count >= vehicleObj.Length)
+                if (vehicleList.Count >= vehicleList.Capacity)
                 {
-                    Debug.Log("탈출");
-                    yield break;
+                    Debug.LogWarning("List is about to reach capacity. Stopping the coroutine.");
+                    yield break;  // Capacity 초과 시 코루틴 종료
                 }
-                carRand = (carRand + 1) % vehicleObj.Length;
+                carRand = Random.Range(0, vehicleObj.Length);
+                while (vehicleList[carRand].activeSelf)
+                {
+                    
+                    carRand = (carRand + 1) % vehicleObj.Length;
+                }
+                roadRand = Random.Range(0, spawnTransform.Length);
+                //이전 저장된 변수와 다시 뽑은 roadRand값이 compareRoad와 같다면 중복되지 않도록 계산
+                if (compareRoad == roadRand)
+                {
+                    roadRand = (roadRand + 1) % spawnTransform.Length;
+                }
+                //compareRoad 와 roadRand 로 설정된 변수의 값을 넣어줌
+                compareRoad = roadRand;
+
+                vehicleList[carRand].transform.position = spawnTransform[roadRand].transform.position;
+                vehicleList[carRand].SetActive(true);
             }
 
-            vehicleList[carRand].SetActive(true);
-            roadRand = Random.Range(0, spawnTransform.Length);
-            vehicleList[carRand].transform.position = spawnTransform[roadRand].transform.position;
 
             yield return new WaitForSeconds(3f);
         }
     }
 }
+
+//오브젝트 활성화 위치 조정

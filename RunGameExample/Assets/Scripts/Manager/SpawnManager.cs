@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -11,6 +12,8 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField] int count, carRand, roadRand;
     [SerializeField] int compareRoad = -1;
+    [SerializeField] float spawnRate;
+    
 
 
     private void Start()
@@ -49,6 +52,18 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    public bool isVehicleFull()
+    {
+        for(int i = 0;i < vehicleList.Count;i++)
+        {
+            if (vehicleList[i].activeSelf == false)
+            {
+                return false;
+            }   
+        }
+        return true;
+    }
+
     IEnumerator ActivateVehicle()
     {
         //WaitforSecond를 Dictionary에 저장
@@ -58,16 +73,25 @@ public class SpawnManager : MonoBehaviour
         {
             for(int i = 0; i<Random.Range(1,3); i++)
             {
-                if (vehicleList.Count >= vehicleList.Capacity)
-                {
-                    Debug.LogWarning("List is about to reach capacity. Stopping the coroutine.");
-                    yield break;  // Capacity 초과 시 코루틴 종료
-                }
+
                 carRand = Random.Range(0, vehicleObj.Length);
+                //현재 게임 오브젝트가 활성화 되어 있는지 확인
                 while (vehicleList[carRand].activeSelf)
                 {
-                    
-                    carRand = (carRand + 1) % vehicleObj.Length;
+                    //리스트에 있는 모든 오브젝트가 활성화 되어있는지 확인
+                    if(isVehicleFull())
+                    {
+                        //모든 게임 오브젝트가 활성화되어 있다면 게임 오브젝트를 새로 생성한 다음
+                        //vehicle을 리스트에 넣어줌
+                        GameObject vehicle = Instantiate(vehicleObj[Random.Range(0, vehicleObj.Length)]);
+
+                        vehicle.SetActive(false);
+
+                        vehicleList.Add(vehicle);
+
+                    }
+                    //현재 리스트에 있는 모든 게임 오브젝트가 활성화되어 있지 않다면 Random 변수 값을 +1 해서 다시 검색 함
+                    carRand = (carRand + 1) % vehicleList.Count;
                 }
                 roadRand = Random.Range(0, spawnTransform.Length);
                 //이전 저장된 변수와 다시 뽑은 roadRand값이 compareRoad와 같다면 중복되지 않도록 계산
@@ -83,7 +107,7 @@ public class SpawnManager : MonoBehaviour
             }
 
 
-            yield return new WaitForSeconds(3f);
+            yield return CoroutineCache.waitForSeconds(spawnRate);
         }
     }
 }

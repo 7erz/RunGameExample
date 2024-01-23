@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
     
     public void StartGame()
     {
-        StartCoroutine(AsyncSceneLoader.instance.AsynLoad((SceneID.GAME)));
+        //AsyncSceneLoader.instance.AsynLoad((SceneID.GAME));
+        StartCoroutine(AsyncSceneLoader.instance.AsynLoad(SceneID.GAME));
     }
 }

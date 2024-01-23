@@ -7,8 +7,15 @@ public class Vehicle : CollisionObject
     [SerializeField] float carSpeed;
     [SerializeField] Vector3 carDir;
 
+    public float CarSpeed
+    {
+        get { return carSpeed; }
+        set { carSpeed = value; }
+    }
+
     private void OnEnable()
     {
+        carSpeed = Random.Range(5, 15);
         carDir = Vector3.forward;
     }
 

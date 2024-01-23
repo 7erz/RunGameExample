@@ -358,6 +358,7 @@
 "Assets/Scripts/CollisionObject/CollisionObject.cs"
 "Assets/Scripts/CollisionObject/DisableZone.cs"
 "Assets/Scripts/CollisionObject/RoadBox.cs"
+"Assets/Scripts/CollisionObject/VehicleDetector.cs"
 "Assets/Scripts/ETC/CoroutineCache.cs"
 "Assets/Scripts/MainMenu.cs"
 "Assets/Scripts/Manager/InputManager.cs"

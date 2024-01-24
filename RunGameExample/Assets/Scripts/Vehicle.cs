@@ -6,6 +6,7 @@ public class Vehicle : CollisionObject
 {
     [SerializeField] float carSpeed;
     [SerializeField] Vector3 carDir;
+    [SerializeField] AudioClip crashed;
 
     public float CarSpeed
     {
@@ -15,12 +16,17 @@ public class Vehicle : CollisionObject
 
     private void OnEnable()
     {
-        carSpeed = Random.Range(5, 15);
+        carSpeed = GameManager.instance.speed + Random.Range(5, 15);
         carDir = Vector3.forward;
     }
 
     private void Update()
     {
+        if(GameManager.instance.state == false)
+        {
+            return;
+        }
+
         MovingCar();
     }
 
@@ -42,6 +48,9 @@ public class Vehicle : CollisionObject
     public override void Activate(Runner runner)
     {
         Debug.Log("ºÎµúÇûÀ½");
+        AudioManager.instance.SFXSound(crashed);
+        runner.animator.Play("Die");
+        GameManager.instance.GameOver();
     }
 
 

@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carSpeed: 15
   carDir: {x: 0, y: 0, z: 0}
+  crashed: {fileID: 8300000, guid: d9865ab4cc6e19a4cb7ccd45abf105bd, type: 3}
 --- !u!1 &7742527936716524700
 GameObject:
   m_ObjectHideFlags: 0

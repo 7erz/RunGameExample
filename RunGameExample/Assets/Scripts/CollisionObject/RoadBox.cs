@@ -5,15 +5,22 @@ using UnityEngine.Events;
 
 public class RoadBox : CollisionObject
 {
+    [SerializeField] float initSpeed;
     [SerializeField] UnityEvent callback;
+
+    private void Start()
+    {
+        initSpeed = GameManager.instance.speed;
+    }
 
     public override void Activate(Runner runner)
     {
         callback.Invoke();
+
+        GameManager.instance.IncreaseSpeed();
+
+        runner.animator.speed = GameManager.instance.speed / initSpeed;
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        
-    }
+
 }

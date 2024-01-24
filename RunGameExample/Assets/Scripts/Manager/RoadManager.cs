@@ -21,8 +21,13 @@ public class RoadManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.state)
+        {
+            MoveRoadForeach();    //나의 답
+        }
+
         //Debugging();
-        MoveRoadForeach();    //나의 답
+        
         //MoveRoadFor();
     }
 
@@ -35,7 +40,7 @@ public class RoadManager : MonoBehaviour
             Vector3 targetPosition = new Vector3(gameobj.transform.position.x, gameobj.transform.position.y, targetZ);
 
             gameobj.transform.position = Vector3.Lerp(gameobj.transform.position, targetPosition, lerpSpeed * Time.deltaTime);*/
-            gameobj.transform.Translate(Vector3.back * lerpSpeed * Time.deltaTime);
+            gameobj.transform.Translate(Vector3.back * GameManager.instance.speed * Time.deltaTime);
         }
         
     }
@@ -44,7 +49,7 @@ public class RoadManager : MonoBehaviour
     {
         for(int i = 0; i < roadList.Count; i++)
         {
-            roadList[i].transform.Translate(Vector3.back * lerpSpeed * Time.deltaTime);
+            roadList[i].transform.Translate(Vector3.back * GameManager.instance.speed * Time.deltaTime);
         }
     }
 

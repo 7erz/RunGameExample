@@ -11,6 +11,8 @@ public enum RoadLine
 
 public class Runner : MonoBehaviour
 {
+    public Animator animator;
+
     [SerializeField] RoadLine roadLine;
     [SerializeField] float positionX;
     [SerializeField] float moveSpeed;
@@ -43,7 +45,10 @@ public class Runner : MonoBehaviour
         //관리가 어려움 -> ResourcesManager를 만들어 하나에 관리하는 방법이 있음
         //}*/
 
-
+        if(GameManager.instance.state == false)
+        {
+            return;
+        }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {

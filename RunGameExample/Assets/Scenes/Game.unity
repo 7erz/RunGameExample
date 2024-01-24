@@ -583,7 +583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 2.55, z: -5}
+  m_FollowOffset: {x: 0, y: 2.55, z: -5.5}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -701,7 +701,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 2.55, z: -5}
+  m_LocalPosition: {x: 0, y: 2.55, z: -5.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1153,6 +1153,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5745005700174969051, guid: b3ba16f6c2cc7b0409e66abba07462d3, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 31250285402428787}
     - target: {fileID: 8207484471401039863, guid: b3ba16f6c2cc7b0409e66abba07462d3, type: 3}
       propertyPath: m_Name
       value: Runner
@@ -1210,6 +1214,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ba16f6c2cc7b0409e66abba07462d3, type: 3}
+--- !u!95 &31250285402428787 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7915742985115665508, guid: b3ba16f6c2cc7b0409e66abba07462d3, type: 3}
+  m_PrefabInstance: {fileID: 31250285402428786}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2542423370746646951
 PrefabInstance:
   m_ObjectHideFlags: 0

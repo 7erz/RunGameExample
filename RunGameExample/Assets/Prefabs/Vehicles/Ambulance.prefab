@@ -234,6 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carSpeed: 15
   carDir: {x: 0, y: 0, z: 0}
+  crashed: {fileID: 8300000, guid: d9865ab4cc6e19a4cb7ccd45abf105bd, type: 3}
 --- !u!1001 &2442275931289327764
 PrefabInstance:
   m_ObjectHideFlags: 0

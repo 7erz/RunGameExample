@@ -69,7 +69,7 @@ public class SpawnManager : MonoBehaviour
         //WaitforSecond를 Dictionary에 저장
 
         //CourutineCache.WaitForSecond(변수값)
-        while (true)
+        while (GameManager.instance.state)
         {
             for(int i = 0; i<Random.Range(1,3); i++)
             {

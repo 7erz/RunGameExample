@@ -13,9 +13,11 @@ public class Runner : MonoBehaviour
 {
     public Animator animator;
 
-    [SerializeField] RoadLine roadLine;
+    [SerializeField] public RoadLine roadLine;
     [SerializeField] float positionX;
     [SerializeField] float moveSpeed;
+    [SerializeField] LeftCollider leftCollider;
+    [SerializeField] RightCollider rightCollider;
 
     private void OnEnable()
     {
@@ -52,6 +54,11 @@ public class Runner : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            if (leftCollider.IsTriggered)
+            {
+                return;
+            }
+
             if(roadLine >RoadLine.LEFT)
             {
                 roadLine--; 
@@ -59,6 +66,10 @@ public class Runner : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
+            if (rightCollider.IsTriggered)
+            {
+                return;
+            }
             if (roadLine < RoadLine.RIGHT)
             {
                 roadLine++;

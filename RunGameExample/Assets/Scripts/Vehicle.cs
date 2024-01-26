@@ -8,6 +8,10 @@ public class Vehicle : CollisionObject
     [SerializeField] Vector3 carDir;
     [SerializeField] AudioClip crashed;
 
+    [SerializeField] float minRandomSpeed = 5f;
+    [SerializeField] float maxRandomSpeed = 20f;
+
+
     public float CarSpeed
     {
         get { return carSpeed; }
@@ -16,7 +20,12 @@ public class Vehicle : CollisionObject
 
     private void OnEnable()
     {
-        carSpeed = GameManager.instance.speed + Random.Range(5, 15);
+        if(minRandomSpeed < 19)
+        {
+            minRandomSpeed += 1;
+        }
+
+        carSpeed = GameManager.instance.speed + Random.Range(minRandomSpeed, maxRandomSpeed);
         carDir = Vector3.forward;
     }
 

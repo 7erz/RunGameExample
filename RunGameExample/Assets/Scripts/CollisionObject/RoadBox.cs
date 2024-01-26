@@ -7,6 +7,7 @@ public class RoadBox : CollisionObject
 {
     [SerializeField] float initSpeed;
     [SerializeField] UnityEvent callback;
+    [SerializeField] LevelManager levelManager;
 
     private void Start()
     {
@@ -18,6 +19,10 @@ public class RoadBox : CollisionObject
         callback.Invoke();
 
         GameManager.instance.IncreaseSpeed();
+
+        DataManager.instance.data.score += 10;
+        DataManager.instance.Save();
+        //levelManager.ControlLevel();
 
         runner.animator.speed = GameManager.instance.speed / initSpeed;
     }

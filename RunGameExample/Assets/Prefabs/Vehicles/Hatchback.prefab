@@ -218,8 +218,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.132523, y: 1.8756622, z: 3.8137946}
-  m_Center: {x: -0.005837679, y: 0.93987757, z: -0.0058379173}
+  m_Size: {x: 2.132523, y: 1.8756622, z: 2.8961117}
+  m_Center: {x: -0.005837679, y: 0.93987757, z: 0.5483471}
 --- !u!114 &-8021409496164193161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +235,8 @@ MonoBehaviour:
   carSpeed: 15
   carDir: {x: 0, y: 0, z: 0}
   crashed: {fileID: 8300000, guid: d9865ab4cc6e19a4cb7ccd45abf105bd, type: 3}
+  minRandomSpeed: 5
+  maxRandomSpeed: 20
 --- !u!1001 &2841527009041826010
 PrefabInstance:
   m_ObjectHideFlags: 0

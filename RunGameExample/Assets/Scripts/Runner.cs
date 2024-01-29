@@ -14,10 +14,9 @@ public class Runner : MonoBehaviour
     public Animator animator;
 
     [SerializeField] public RoadLine roadLine;
+    [SerializeField] public RoadLine prevRoadLine;
     [SerializeField] float positionX;
     [SerializeField] float moveSpeed;
-    [SerializeField] LeftCollider leftCollider;
-    [SerializeField] RightCollider rightCollider;
 
     private void OnEnable()
     {
@@ -26,6 +25,7 @@ public class Runner : MonoBehaviour
     void Start()
     {
         roadLine = RoadLine.MIDDLE;
+        prevRoadLine = RoadLine.MIDDLE;
         InputManager.instance.keyAction += Move;
     }
 
@@ -54,27 +54,22 @@ public class Runner : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (leftCollider.IsTriggered)
-            {
-                return;
-            }
 
             if(roadLine >RoadLine.LEFT)
             {
-                roadLine--; 
-            }  
+                prevRoadLine = roadLine;
+                roadLine--;
+            }
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if (rightCollider.IsTriggered)
-            {
-                return;
-            }
             if (roadLine < RoadLine.RIGHT)
             {
+                prevRoadLine = roadLine;
                 roadLine++;
             }
         }
+
     }
 
     public void Status()
@@ -93,9 +88,15 @@ public class Runner : MonoBehaviour
         }
     }
 
+    public void RevertPos()
+    {
+        roadLine = prevRoadLine;
+    }
+
     public void SmoothMovement(float positionX)
     {
         transform.position = Vector3.Lerp(transform.position, new Vector3(positionX, 0, 0), Time.deltaTime * moveSpeed);
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -112,4 +113,6 @@ public class Runner : MonoBehaviour
     {
         InputManager.instance.keyAction -= Move;
     }
+
+
 }

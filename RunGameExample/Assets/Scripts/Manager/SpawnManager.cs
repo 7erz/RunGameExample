@@ -106,7 +106,7 @@ public class SpawnManager : MonoBehaviour
                 vehicleList[carRand].SetActive(true);
             }
 
-            Debug.Log(LevelManager.spawnTime);
+            //Debug.Log(LevelManager.spawnTime);
             yield return CoroutineCache.waitForSeconds(LevelManager.spawnTime);
         }
     }

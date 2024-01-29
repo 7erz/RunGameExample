@@ -54,7 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7a7036a4c13ea354580a83a5e4f67e4f, type: 3}
       propertyPath: m_Name
-      value: Runner Variant
+      value: Runner
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a7036a4c13ea354580a83a5e4f67e4f, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -111,9 +115,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60860b6890656e74ba4d0a20e0305413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 7915742985115665508}
   roadLine: 0
   positionX: 2.25
   moveSpeed: 10
+  leftCollider: {fileID: 0}
+  rightCollider: {fileID: 0}
 --- !u!54 &6046093604523500214
 Rigidbody:
   m_ObjectHideFlags: 0

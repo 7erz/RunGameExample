@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Vehicle : CollisionObject
+public class Vehicle : MonoBehaviour
 {
     [SerializeField] float carSpeed;
     [SerializeField] Vector3 carDir;
-    [SerializeField] AudioClip crashed;
+    
 
     [SerializeField] float minRandomSpeed = 5f;
     [SerializeField] float maxRandomSpeed = 20f;
@@ -54,13 +54,14 @@ public class Vehicle : CollisionObject
         }
     }*/
 
-    public override void Activate(Runner runner)
+    //CollisionObject »ó¼Ó ¹Þ±â Àü
+    /*public override void Activate(Runner runner)
     {
         Debug.Log("ºÎµúÇûÀ½");
         AudioManager.instance.SFXSound(crashed);
         runner.animator.Play("Die");
         GameManager.instance.GameOver();
-    }
+    }*/
 
 
 

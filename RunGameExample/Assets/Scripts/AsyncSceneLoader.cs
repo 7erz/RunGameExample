@@ -3,82 +3,83 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
 
 public enum SceneID
 {
     TITLE,
-    GAME
+    GAME,
 }
 
 public class AsyncSceneLoader : Singleton<AsyncSceneLoader>
 {
-    //이동하면서 페이드인 페이드 아웃 할 때 좋음
     [SerializeField] float time;
     [SerializeField] Image fadeImage;
 
     public IEnumerator FadeIn()
     {
-        Debug.Log("실행");
         Color color = fadeImage.color;
 
-        color.a = 1f;
+        color.a = 1.0f;
 
         fadeImage.gameObject.SetActive(true);
 
-        while (color.a > 0)
+        while (color.a > 0f)
         {
-            
-            color.a -= Time.deltaTime * time;
+            color.a -= Time.deltaTime;
+
             fadeImage.color = color;
 
-           yield return null;
+            yield return null;
         }
+
         fadeImage.gameObject.SetActive(false);
     }
 
-    public IEnumerator AsynLoad(SceneID sceneID)
+    public IEnumerator AsyncLoad(SceneID sceneID)
     {
         fadeImage.gameObject.SetActive(true);
 
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync((int)sceneID);
 
-        //bool allowSceneActivation : 장면이 준비되는 즉시 장면을 활성화시킬 것 인지 허용하는 기능
+        // bool allowSceneActivation : 장면이 준비되는 즉시 장면을 활성화시킬 것 인지 허용하는 기능입니다.
         asyncOperation.allowSceneActivation = false;
 
         Color color = fadeImage.color;
-        color.a = 0;
 
-        while(asyncOperation.isDone == false)
+        color.a = 0f;
+
+        // bool isDone : 해당 동작이 준비되었는 지 판단하는 기능입니다.
+        while (asyncOperation.isDone == false)
         {
             color.a += Time.deltaTime;
 
             fadeImage.color = color;
 
-            if(asyncOperation.progress >= 0.9f)
+            // float progress : 작업의 진행 정도를 0 ~ 1 사이의 값으로 확인하는 기능입니다.
+            if (asyncOperation.progress >= 0.9f)
             {
-                //알파값 러프로 증가
-                color.a = Mathf.Lerp(color.a, 1f, Time.deltaTime * time);
+                // color의 alpha 값을 1.0f로 Lerp 함수를 통해서 올려주세요.
+                color.a = Mathf.Lerp(color.a, 1f, Time.deltaTime);
+
                 fadeImage.color = color;
 
-                //알파값이 1보다 크거나 같다면
-                if (color.a >= 1f)
+                // 알파값이 1.0보다 크거나 같다면
+                if (color.a >= 1.0f)
                 {
-                    //allowSceneActivation 실행
+                    // allowSceneActivation을 활성화합니다. 
                     asyncOperation.allowSceneActivation = true;
+
                     yield break;
                 }
-                yield return null;
             }
-        }
-        //bool isDone : 해당 동작이 준비 되었는 지 판단하는 기능
 
-        //float progress : 작업의 진행 정도를 0~1사이에 값으로 확인
+            yield return null;
+        }
+
+
 
 
     }
-
-
 
     private void OnEnable()
     {
@@ -87,11 +88,13 @@ public class AsyncSceneLoader : Singleton<AsyncSceneLoader>
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        StartCoroutine (FadeIn());
+        StartCoroutine(FadeIn());
     }
 
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
+
 }
+

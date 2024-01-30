@@ -57,6 +57,7 @@ public class Runner : MonoBehaviour
 
             if(roadLine >RoadLine.LEFT)
             {
+                animator.Play("Left Avoid");
                 prevRoadLine = roadLine;
                 roadLine--;
             }
@@ -65,6 +66,7 @@ public class Runner : MonoBehaviour
         {
             if (roadLine < RoadLine.RIGHT)
             {
+                animator.Play("Right Avoid");
                 prevRoadLine = roadLine;
                 roadLine++;
             }

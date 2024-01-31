@@ -25,7 +25,7 @@ public class AsyncSceneLoader : Singleton<AsyncSceneLoader>
 
         while (color.a > 0f)
         {
-            color.a -= Time.deltaTime;
+            color.a -= Time.unscaledDeltaTime;
 
             fadeImage.color = color;
 
@@ -51,7 +51,7 @@ public class AsyncSceneLoader : Singleton<AsyncSceneLoader>
         // bool isDone : 해당 동작이 준비되었는 지 판단하는 기능입니다.
         while (asyncOperation.isDone == false)
         {
-            color.a += Time.deltaTime;
+            color.a += Time.unscaledDeltaTime;
 
             fadeImage.color = color;
 
@@ -59,7 +59,7 @@ public class AsyncSceneLoader : Singleton<AsyncSceneLoader>
             if (asyncOperation.progress >= 0.9f)
             {
                 // color의 alpha 값을 1.0f로 Lerp 함수를 통해서 올려주세요.
-                color.a = Mathf.Lerp(color.a, 1f, Time.deltaTime);
+                color.a = Mathf.Lerp(color.a, 1f, Time.unscaledDeltaTime);
 
                 fadeImage.color = color;
 
@@ -94,6 +94,7 @@ public class AsyncSceneLoader : Singleton<AsyncSceneLoader>
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        Time.timeScale = 1f;
     }
 
 }

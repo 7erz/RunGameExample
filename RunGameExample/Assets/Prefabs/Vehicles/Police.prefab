@@ -76,7 +76,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carSpeed: 15
   carDir: {x: 0, y: 0, z: 0}
-  crashed: {fileID: 8300000, guid: d9865ab4cc6e19a4cb7ccd45abf105bd, type: 3}
   minRandomSpeed: 5
   maxRandomSpeed: 20
 --- !u!1 &1140932992017932294
@@ -383,6 +382,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 894018401138978179}
     m_Modifications:
+    - target: {fileID: 74250325954002040, guid: 3cff37f39f8c73045981269be70abcee, type: 3}
+      propertyPath: m_Size.z
+      value: 0.53794515
+      objectReference: {fileID: 0}
+    - target: {fileID: 74250325954002040, guid: 3cff37f39f8c73045981269be70abcee, type: 3}
+      propertyPath: m_Center.z
+      value: 0.05613023
+      objectReference: {fileID: 0}
     - target: {fileID: 1107080649945975939, guid: 3cff37f39f8c73045981269be70abcee, type: 3}
       propertyPath: m_Name
       value: Front Detector

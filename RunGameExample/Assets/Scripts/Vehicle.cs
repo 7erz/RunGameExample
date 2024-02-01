@@ -6,11 +6,6 @@ public class Vehicle : MonoBehaviour
 {
     [SerializeField] float carSpeed;
     [SerializeField] Vector3 carDir;
-    
-
-    [SerializeField] float minRandomSpeed = 5f;
-    [SerializeField] float maxRandomSpeed = 20f;
-
 
     public float CarSpeed
     {
@@ -20,12 +15,7 @@ public class Vehicle : MonoBehaviour
 
     private void OnEnable()
     {
-        if(minRandomSpeed < 19)
-        {
-            minRandomSpeed += 1;
-        }
-
-        carSpeed = GameManager.instance.speed + Random.Range(minRandomSpeed, maxRandomSpeed);
+        carSpeed = GameManager.instance.speed + Random.Range(GameManager.instance.minRandomSpeed, GameManager.instance.maxRandomSpeed);
         carDir = Vector3.forward;
     }
 

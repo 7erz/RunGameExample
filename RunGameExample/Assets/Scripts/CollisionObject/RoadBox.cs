@@ -20,8 +20,9 @@ public class RoadBox : CollisionObject
 
         GameManager.instance.IncreaseSpeed();
 
-        DataManager.instance.data.score += 10;
-        DataManager.instance.Save();
+        //더이상 사용하지 않음
+        //DataManager.instance.data.score += 10;
+        //DataManager.instance.Save();
         //levelManager.ControlLevel();
 
         runner.animator.speed = GameManager.instance.speed / initSpeed;

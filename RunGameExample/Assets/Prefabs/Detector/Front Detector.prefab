@@ -66,4 +66,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc59a0c86cdf19c43977ee8f84ee9b73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crashed: {fileID: 0}
+  crashed: {fileID: 8300000, guid: d9865ab4cc6e19a4cb7ccd45abf105bd, type: 3}

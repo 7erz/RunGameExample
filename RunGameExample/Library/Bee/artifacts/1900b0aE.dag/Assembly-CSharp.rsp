@@ -371,6 +371,7 @@
 "Assets/Scripts/Manager/GameManager.cs"
 "Assets/Scripts/Manager/InputManager.cs"
 "Assets/Scripts/Manager/LevelManager.cs"
+"Assets/Scripts/Manager/MaterialChangerManager.cs"
 "Assets/Scripts/Manager/ResourcesManager.cs"
 "Assets/Scripts/Manager/RoadManager.cs"
 "Assets/Scripts/Manager/Singleton.cs"

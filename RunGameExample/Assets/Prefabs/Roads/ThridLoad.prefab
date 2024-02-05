@@ -8675,6 +8675,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1363230932028138258}
+  - component: {fileID: 6718637348437433945}
   m_Layer: 0
   m_Name: ThridLoad
   m_TagString: Untagged
@@ -8736,6 +8737,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6718637348437433945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6081146385385932272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b320d9192a3733149b5ce35daff327e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newMaterial: {fileID: 2100000, guid: a40447b9b526fce4fb233608893a6e41, type: 2}
+  isChangeMaterial: 1
 --- !u!1 &6112023355569560836
 GameObject:
   m_ObjectHideFlags: 0
